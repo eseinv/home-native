@@ -10,6 +10,7 @@ import {
   View
 } from "react-native";
 import { RoomOverview } from "../components/RoomOverview";
+import { DeviceSwitch } from "../components/DeviceSwitch";
 
 //  simulation of a get request
 const rooms = [
@@ -17,18 +18,18 @@ const rooms = [
     id: 1,
     name: "Living Room",
     devices: [
-      { id: 1, name: "Temperature", info: "24C", icon: "sun" },
+      { id: 1, name: "Temperature", info: "24°C", icon: "sun" },
       { id: 2, name: "A/C", info: "OFF", icon: "wind" }
     ]
-  },
-  {
-    id: 2,
-    name: "Kitchen",
-    devices: [
-      { id: 1, name: "Lights", info: "ON", icon: "light" },
-      { id: 2, name: "Alarm", info: "OFF", icon: "alarm" }
-    ]
   }
+  // {
+  //   id: 2,
+  //   name: "Kitchen",
+  //   devices: [
+  //     { id: 1, name: "Lights", info: "ON", icon: "light" },
+  //     { id: 2, name: "Alarm", info: "OFF", icon: "alarm" }
+  //   ]
+  // }
 ];
 
 export default function HomeScreen() {
@@ -53,6 +54,10 @@ export default function HomeScreen() {
               roomDevices={room.devices}
             />
           ))}
+        </View>
+        <View style={styles.devicesContainer}>
+          <DeviceSwitch deviceName="Air condition" deviceStatus="ON" />
+          <DeviceSwitch deviceName="Air condition" deviceStatus="OFF" />
         </View>
       </ScrollView>
     </View>
@@ -93,6 +98,12 @@ const styles = StyleSheet.create({
   },
   addDeviceText: {
     fontSize: 20
+  },
+  devicesContainer: {
+    flex: 1,
+    flexDirection: "row",
+    justifyContent: "space-around",
+    backgroundColor: "#eee"
   }
   // tabBarInfoContainer: {
   //   position: "absolute",
